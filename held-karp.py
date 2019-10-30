@@ -79,13 +79,13 @@ def generate_distances(n):
 
 def read_distances(filename):
     dists = []
-    with open(filename, 'rb') as f:
+    with open(filename, 'r') as f:
         for line in f:
             # Skip comments
             if line[0] == '#':
                 continue
-
-            dists.append(map(int, map(str.strip, line.split(','))))
+            else:
+                dists.append(list(map(int, (line.strip().encode()).split(','.encode()))))
 
     return dists
 
